@@ -11,10 +11,12 @@ namespace Sort_and_Search
     {
         static void Main(string[] args)
         {
-            int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
-            readFile("Low_128");
+            //decimal[] array = { 1.0, 2.1, 3.3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+            Console.WriteLine("Sort type please..");
+            string sortTypeRequested = Console.ReadLine();
+            findValue("Low_128", sortTypeRequested);
 
-            Console.WriteLine(linSearch(array, 1)); //Linear Search works
+            //Console.WriteLine(linSearch(array, 4)); Linear Search works
 
             //Console.WriteLine(binarySearch(array, 3)); Binary Search Works
 
@@ -28,7 +30,7 @@ namespace Sort_and_Search
             {
                 Console.Write(num + ", ");
             }*/
-            //bubbleSort(array, array.Length); bubblesort works
+            //bubbleSort(myInts, myInts.Length); bubblesort works
             //insertionSort(array); insertion sort works
         }
 
@@ -38,22 +40,22 @@ namespace Sort_and_Search
         /// </summary>
         /// <param name="array">Takes in an array (to be defined by the user) for sorting.</param>
         /// <param name="length">This variable is the length of the array given in the other variable.</param>
-        public static void bubbleSort(int[] array, int length)
+        public static void bubbleSort(decimal[] array, decimal length)
         {
-            for (int i = 0; i < length - 1; i++)
+            for (decimal i = 0; i < length - 1; i++)
             {
                 for (int j = 0; j < length - 1 - i; j++)
                 {
                     if (array[j + 1] < array[j])
                     {
-                        int temp = array[j];
+                        decimal temp = array[j];
                         array[j] = array[j + 1];
                         array[j + 1] = temp;
                     }
                 }
             }
             //loop to show the numbers in order
-            foreach (int number in array)
+            foreach (decimal number in array)
             {
                 Console.WriteLine(number);
             }
@@ -231,14 +233,22 @@ namespace Sort_and_Search
         }
 
         //function for grabbing the text file and inputting this into an array and then arrange 
-        public static void readFile(string fileName)
+        public static void findValue(string fileName, string sortTypeSelected )//, string searchTypeSelected)
         {
             //read the file to a string array
             string[] lines = File.ReadAllLines(@"..\Bank_Data\" + fileName + ".txt");
-
-            /*now convert this string array to an integer array
+            //Now convert to numbers for the algorithms above
             decimal[] myInts = lines.Select(n => Convert.ToDecimal(n)).ToArray();
-            */
+
+            if(sortTypeSelected == "1")
+            {
+                bubbleSort(myInts, myInts.Length);
+            } else
+            {
+                Console.Write("No sorry");
+            }
+
+
         }
         //into ascending order with relevant algorithm. 
         //now take in a user defined variable for searching in said array and show items location within the array
