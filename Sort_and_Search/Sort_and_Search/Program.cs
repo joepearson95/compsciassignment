@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +12,9 @@ namespace Sort_and_Search
         static void Main(string[] args)
         {
             int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+            readFile("Low_128");
 
-            //Console.WriteLine(linSearch(array, 4)); Linear Search works
+            Console.WriteLine(linSearch(array, 1)); //Linear Search works
 
             //Console.WriteLine(binarySearch(array, 3)); Binary Search Works
 
@@ -229,6 +231,15 @@ namespace Sort_and_Search
         }
 
         //function for grabbing the text file and inputting this into an array and then arrange 
+        public static void readFile(string fileName)
+        {
+            //read the file to a string array
+            string[] lines = File.ReadAllLines(@"..\Bank_Data\" + fileName + ".txt");
+
+            /*now convert this string array to an integer array
+            decimal[] myInts = lines.Select(n => Convert.ToDecimal(n)).ToArray();
+            */
+        }
         //into ascending order with relevant algorithm. 
         //now take in a user defined variable for searching in said array and show items location within the array
         //or else show an error.
