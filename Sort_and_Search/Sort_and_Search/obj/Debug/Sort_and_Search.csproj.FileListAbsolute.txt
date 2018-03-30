@@ -1,0 +1,6 @@
+c:\users\joe\documents\visual studio 2017\Projects\Sort_and_Search\Sort_and_Search\obj\Debug\Sort_and_Search.csprojResolveAssemblyReference.cache
+c:\users\joe\documents\visual studio 2017\Projects\Sort_and_Search\Sort_and_Search\bin\Debug\Sort_and_Search.exe.config
+c:\users\joe\documents\visual studio 2017\Projects\Sort_and_Search\Sort_and_Search\bin\Debug\Sort_and_Search.exe
+c:\users\joe\documents\visual studio 2017\Projects\Sort_and_Search\Sort_and_Search\bin\Debug\Sort_and_Search.pdb
+c:\users\joe\documents\visual studio 2017\Projects\Sort_and_Search\Sort_and_Search\obj\Debug\Sort_and_Search.exe
+c:\users\joe\documents\visual studio 2017\Projects\Sort_and_Search\Sort_and_Search\obj\Debug\Sort_and_Search.pdb
