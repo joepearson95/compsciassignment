@@ -11,11 +11,98 @@ namespace Sort_and_Search
     {
         static void Main(string[] args)
         {
-            //decimal[] array = { 1.0, 2.1, 3.3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
-            Console.WriteLine("Sort type please..");
-            string sortTypeRequested = Console.ReadLine();
-            findValue("Low_128", sortTypeRequested);
+            while (true)
+            {
+                string fileType, fileRange;
+                string filePath = "";
 
+                Console.Write("Welcome to CMP1124M Algorithms Complexity: Assessment 2.\r\nPlease type number referring to the file you want to use:");
+                Console.WriteLine("----------------------");
+                Console.Write("[1] - Low\r\n[2] - High\r\n[3] - Open\r\n[4] - Close\r\n[5] - Change\r\n[6] - Exit\r\n");
+                fileType = Console.ReadLine();
+                //Depending on the type of file chosen will bring up the files within said range
+                Console.WriteLine("----------------------");
+                Console.Write("[1] - 128\r\n[2] - 256\r\n[3] - 1024\r\n[4] - Exit\r\n");
+                fileRange = Console.ReadLine();
+
+                if (fileType == "1" && fileRange == "1")
+                {
+                    filePath = "Low_128";
+                }
+                else if (fileType == "1" && fileRange == "2")
+                {
+                    filePath = "Low_256";
+                }
+                else if (fileType == "1" && fileRange == "3")
+                {
+                    filePath = "Low_1024";
+                }
+                else if (fileType == "2" && fileRange == "1")
+                {
+                    filePath = "High_128";
+                }
+                else if (fileType == "2" && fileRange == "2")
+                {
+                    filePath = "High_256";
+                }
+                else if (fileType == "2" && fileRange == "3")
+                {
+                    filePath = "High_1024";
+                }
+                else if (fileType == "3" && fileRange == "1")
+                {
+                    filePath = "Open_128";
+                }
+                else if (fileType == "3" && fileRange == "2")
+                {
+                    filePath = "Open_256";
+                }
+                else if (fileType == "3" && fileRange == "3")
+                {
+                    filePath = "Open_1024";
+                }
+                else if (fileType == "4" && fileRange == "1")
+                {
+                    filePath = "Close_128";
+                }
+                else if (fileType == "4" && fileRange == "2")
+                {
+                    filePath = "Close_256";
+                }
+                else if (fileType == "4" && fileRange == "3")
+                {
+                    filePath = "Close_1024";
+                }
+                else if (fileType == "5" && fileRange == "1")
+                {
+                    filePath = "Change_128";
+                }
+                else if (fileType == "5" && fileRange == "2")
+                {
+                    filePath = "Change_256";
+                }
+                else if (fileType == "5" && fileRange == "3")
+                {
+                    filePath = "Change_1024";
+                } 
+                else
+                {
+                    Console.WriteLine("Option not available...");
+                    break;
+                }
+                //Now we will search for the number given by the user
+                Console.WriteLine("-------------------\r\nWhat number would you like to search?");
+                decimal numberSearch = Convert.ToDecimal(Console.ReadLine());
+                findValue(filePath, fileRange, numberSearch);
+                //After completing the programs iteration, we will check if the user wants to continue or not.
+                Console.Write("-------------------\r\nPress 1 to continue or 2 to exit...");
+                string choice = Console.ReadLine();
+                if(choice == "2")
+                {
+                    Console.WriteLine("Program is now closing...");
+                    break;
+                }
+            }
             //Console.WriteLine(linSearch(array, 4)); Linear Search works
 
             //Console.WriteLine(binarySearch(array, 3)); Binary Search Works
@@ -93,7 +180,7 @@ namespace Sort_and_Search
         /// <param name="input">Parameter taking in the integer array</param>
         /// <param name="startIndex">Parameter for the starting point of the search</param>
         /// <param name="endIndex">Parameter for the ending point of the search</param>
-        public static void MergeSort(int[] input, int startIndex, int endIndex)
+        public static void MergeSort(decimal[] input, int startIndex, int endIndex)
         {
             int mid;
             if (endIndex > startIndex)
@@ -111,9 +198,9 @@ namespace Sort_and_Search
         /// <param name="left">Left value</param>
         /// <param name="mid">Middle value</param>
         /// <param name="right">Right value</param>
-        public static void Merge(int[] input, int left, int mid, int right)
+        public static void Merge(decimal[] input, int left, int mid, int right)
         {
-            int[] temp = new int[input.Length];
+            decimal[] temp = new decimal[input.Length];
             int i, leftEnd, lengthOfInput, tmpPos;
             leftEnd = mid - 1;
             tmpPos = left;
@@ -156,7 +243,7 @@ namespace Sort_and_Search
         /// <param name="A">This parameter takes in an array to sort</param>
         /// <param name="left">Parameter to take in a variable from the left</param>
         /// <param name="right">Parameter to take in a variable at the right</param>
-        public static void quickSort(int[] A, int left, int right)
+        public static void quickSort(decimal[] A, int left, int right)
         {
             if (left > right || left < 0 || right < 0) { return; }
             int index = partition(A, left, right);
@@ -167,11 +254,11 @@ namespace Sort_and_Search
             }
         }
         //Function for performing the pivot
-        private static int partition(int[] A, int left, int right)
+        private static int partition(decimal[] A, int left, int right)
         {
             if (left > right) { return -1; }
             int end = left;
-            int pivot = A[right];
+            decimal pivot = A[right];
             for (int i = left; i < right; i++)
             {
                 if (A[i] < pivot)
@@ -184,9 +271,9 @@ namespace Sort_and_Search
             return end;
         }
         //Function to swap ints around within specified array
-        private static void swap(int[] A, int left, int right)
+        private static void swap(decimal[] A, int left, int right)
         {
-            int tmp = A[left];
+            decimal tmp = A[left];
             A[left] = A[right];
             A[right] = tmp;
         }
@@ -198,7 +285,7 @@ namespace Sort_and_Search
         /// <param name="inputArray">Parameter takes an array to search over</param>
         /// <param name="key">Parameter takes the value to peform the search on</param>
         /// <returns></returns>
-        public static int binarySearch(int[] inputArray, int key)
+        public static int binarySearch(decimal[] inputArray, decimal key)
         {
             //min and max are the variable at the start end of the given array
             int min = 0;
@@ -208,7 +295,7 @@ namespace Sort_and_Search
                 int mid = (min + max) / 2;
                 if (key == inputArray[mid])
                 {
-                    return ++mid;
+                    return mid;
                 }
                 else if (key < inputArray[mid])
                 {
@@ -233,16 +320,29 @@ namespace Sort_and_Search
         }
 
         //function for grabbing the text file and inputting this into an array and then arrange 
-        public static void findValue(string fileName, string sortTypeSelected )//, string searchTypeSelected)
+        public static void findValue(string fileName, string sortTypeSelected, decimal numberSearch)//, string searchTypeSelected)
         {
             //read the file to a string array
             string[] lines = File.ReadAllLines(@"..\Bank_Data\" + fileName + ".txt");
             //Now convert to numbers for the algorithms above
             decimal[] myInts = lines.Select(n => Convert.ToDecimal(n)).ToArray();
 
+
             if(sortTypeSelected == "1")
             {
                 bubbleSort(myInts, myInts.Length);
+                decimal numberSearched = binarySearch(myInts, numberSearch);
+                Console.WriteLine("Your number was {0}!", numberSearched); 
+            } else if (sortTypeSelected == "2")
+            {
+                quickSort(myInts, 0, myInts.Length - 1);
+                decimal numberSearched = binarySearch(myInts, numberSearch);
+                Console.WriteLine("Your number was {0}!", numberSearched);
+            } else if (sortTypeSelected == "3")
+            {
+                MergeSort(myInts, 0, myInts.Length - 1);
+                decimal numberSearched = binarySearch(myInts, numberSearch);
+                Console.WriteLine("Your number was {0}!", numberSearched);
             } else
             {
                 Console.Write("No sorry");
